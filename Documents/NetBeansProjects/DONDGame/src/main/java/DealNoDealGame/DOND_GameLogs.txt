@@ -1,0 +1,49 @@
+
+Name: Kaizer
+Amount Won: $1341.0
+Banker Final Offer: $1341.0
+Did they take the banker's offer? Yes
+Name: Kaizer Torillo
+Amount Won: $353.0
+Banker Final Offer: $353.0
+Did they take the banker's offer? Yes
+Name: Liam
+Amount Won: $1291.0
+Banker Final Offer: $1291.0
+Did they take the banker's offer? Yes
+Name: Josh
+Amount Won: $1304.0
+Banker Final Offer: $1304.0
+Did they take the banker's offer? Yes
+Name: Linda
+Amount Won: $2500.0
+Banker Final Offer: $235.0
+Did they take the banker's offer? No
+Name: James
+Amount Won: $1797.0
+Banker Final Offer: $1797.0
+Did they take the banker's offer? Yes
+Name: Lucy
+Amount Won: $25.0
+Banker Final Offer: $1703.0
+Did they take the banker's offer? No
+Name: Josh
+Amount Won: $1699.0
+Banker Final Offer: $1699.0
+Did they take the banker's offer? Yes
+Name: Jordan
+Amount Won: $400.0
+Banker Final Offer: $33.0
+Did they take the banker's offer? No
+Name: Ann
+Amount Won: $1838.0
+Banker Final Offer: $1838.0
+Did they take the banker's offer? Yes
+Name: Annie
+Amount Won: $5000.0
+Banker Final Offer: $525.0
+Did they take the banker's offer? No
+Name: Clint
+Amount Won: $1154.0
+Banker Final Offer: $1154.0
+Did they take the banker's offer? Yes
