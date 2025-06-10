@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class CaseMechanics {
 
-    private static int numCases = 20; //maybe add option for user to change. 
+    private static int numCases = 26; //maybe add option for user to change. 
 
     public static int getNumCases() //used in case numCases is changed 
     {
@@ -20,10 +20,7 @@ public class CaseMechanics {
     }
 
     private static List<Double> moneyList() {
-        return Arrays.asList(0.01, 1.0, 5.0, 10.0, 50.0, 100.0,
-                250.0, 500.0, 750.0, 1000.0, 2000.0, 3000.0, 4000.0,
-                5000.0, 7500.0, 10000.0, 25000.0, 50000.0, 75000.0,
-                100000.0);
+        return Arrays.asList(0.01,0.10,0.50,1.0,5.0,10.0,25.0,50.0,75.0,100.0,200.0,300.0,400.0,500.0,700.0,1000.0,2500.0,5000.0,7500.0,10000.0,25000.0,50000.0,75000.0,100000.0,250000.0,500000.0);
     }
 
     public static Map<Integer, Case> setupCases(String filename) // randomise money amount inside case

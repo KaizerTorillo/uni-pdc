@@ -51,3 +51,7 @@ Name: Simba
 Amount Won: $1856.0
 Banker Final Offer: $1856.0
 Did they take the banker's offer? Yes
+Name: Player
+Amount Won: $500000.0
+Banker Final Offer: $2500.0
+Did they take the banker's offer? No
