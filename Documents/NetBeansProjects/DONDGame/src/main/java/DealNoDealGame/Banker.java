@@ -2,8 +2,13 @@ package DealNoDealGame;
 
 import java.util.Map;
 
-public class Banker {
+public class Banker extends GameEntity implements BankerDecide{
 
+    public Banker(String name) {
+        super(name);
+    }
+    
+    @Override
     public double bankerOffer(Map<Integer, Case> cases, Case playerCase) {
 
         //looks at hashmap and checks how many closed cases. 

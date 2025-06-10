@@ -23,7 +23,7 @@ public class DONDGame {
     public DONDGame() { //constructor
         System.out.println(currentPath);
         cases = CaseMechanics.setupCases(prizeList);
-        b = new Banker();
+        b = new Banker("The Banker");
         log = new GameLogs(hsFile);
     }
 

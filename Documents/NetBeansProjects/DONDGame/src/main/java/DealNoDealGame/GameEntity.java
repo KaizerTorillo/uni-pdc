@@ -1,10 +1,6 @@
 
 package DealNoDealGame;
 
-/**
- *
- * @author Kaizer T
- */
 public class GameEntity {
     protected String name;
     

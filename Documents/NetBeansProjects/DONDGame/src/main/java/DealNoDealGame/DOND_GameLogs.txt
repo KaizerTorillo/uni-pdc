@@ -47,3 +47,7 @@ Name: Clint
 Amount Won: $1154.0
 Banker Final Offer: $1154.0
 Did they take the banker's offer? Yes
+Name: Simba
+Amount Won: $1856.0
+Banker Final Offer: $1856.0
+Did they take the banker's offer? Yes
