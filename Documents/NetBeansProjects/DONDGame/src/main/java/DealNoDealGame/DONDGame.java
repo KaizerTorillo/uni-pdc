@@ -7,6 +7,10 @@ import javax.swing.JOptionPane;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class DONDGame extends JFrame
 {
@@ -287,6 +291,20 @@ public class DONDGame extends JFrame
         }
     }
         
+    public void DBConnection()
+    {
+        String url = "jdbc:derby:C:\\Users\\Kaizer T\\AppData\\Roaming\\NetBeans\\23\\derby\\DONDGameDB;";
+        String username = "pdc";
+        String password = "pdc";
+        Connection connection = null;
+        try {
+            Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
+            connection = DriverManager.getConnection(url, username, password);
+            System.out.println("database connected");
+        } catch (Exception e) {
+            System.out.println("connection error");
+        }
+    }
         
     
 
@@ -302,4 +320,6 @@ public class DONDGame extends JFrame
     public static void main(String[] args) {
         SwingUtilities.invokeLater(DONDGame::new);
     }
+    
+    
 }
