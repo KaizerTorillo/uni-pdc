@@ -267,6 +267,8 @@ public class DONDGame extends JFrame
         return player.getChosenCase().getMoney();
     }
 
+    
+    
     public void writeLogs(Double finalAmount, boolean takeDeal) //log results 
     {
         try
@@ -291,22 +293,6 @@ public class DONDGame extends JFrame
         }
     }
         
-    public void DBConnection()
-    {
-        String url = "jdbc:derby:C:\\Users\\Kaizer T\\AppData\\Roaming\\NetBeans\\23\\derby\\DONDGameDB;";
-        String username = "pdc";
-        String password = "pdc";
-        Connection connection = null;
-        try {
-            Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
-            connection = DriverManager.getConnection(url, username, password);
-            System.out.println("database connected");
-        } catch (Exception e) {
-            System.out.println("connection error");
-        }
-    }
-        
-    
 
     /*
 	 * public void yourScore(double won) { Map<String, Double> score = new
