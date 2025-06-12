@@ -273,17 +273,11 @@ public class DONDGame extends JFrame
     {
         try
         {
-            String tookDeal;
-        if (takeDeal) {
-            tookDeal = "Yes";
-        } else {
-            tookDeal = "No";
-        }
-        String result = "\nName: " + player.getName()
-                + "\nAmount Won: $" + finalAmount
-                + "\nBanker Final Offer: $" + lastOffer
-                + "\nDid they take the banker's offer? " + tookDeal;
-        log.outputFile(result);
+            GameDB.dbConnection();
+            GameDB.dbCheck();
+            GameDB.saveResult(player.getName(), finalAmount, lastOffer, takeDeal);
+            GameDB.printResultsTable();
+
 
             
         }

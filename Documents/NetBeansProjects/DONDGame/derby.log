@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Thu Jun 12 01:42:38 NZST 2025:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.17.1.0 - (1913217): instance a816c00e-0197-5f3a-7d02-00000f584df0 
-on database directory C:\Users\Kaizer T\AppData\Roaming\NetBeans\23\derby\DONDGameDB with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e 
+Fri Jun 13 01:12:44 NZST 2025:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.17.1.0 - (1913217): instance a816c00e-0197-6445-7c44-00000eb8d428 
+on database directory C:\Users\Kaizer T\Documents\NetBeansProjects\DONDGame\gamedb with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@70dea4e 
 Loaded from file:/C:/Users/Kaizer%20T/.m2/repository/org/apache/derby/derby/10.17.1.0/derby-10.17.1.0.jar
 java.vendor=Oracle Corporation
 java.runtime.version=21.0.6+8-LTS-188
