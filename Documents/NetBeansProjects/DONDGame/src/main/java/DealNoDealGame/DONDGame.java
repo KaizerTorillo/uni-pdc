@@ -40,22 +40,30 @@ public class DONDGame extends JFrame
         cases = CaseMechanics.setupCases(prizeList);
         b = new Banker("The Banker");
         log = new GameLogs(hsFile);
-        String playerName = JOptionPane.showInputDialog(
-        this,
-        "Enter your name:",
-        "Welcome to Deal or No Deal",
-        JOptionPane.PLAIN_MESSAGE);
-        
-        if (playerName == null || playerName.trim().isEmpty()) 
+        String playerName;
+        while (true)
         {
-            playerName = "Player";
+            playerName = JOptionPane.showInputDialog(this, "Enter your name (letters only):", "Welcome to Deal or No Deal!", JOptionPane.PLAIN_MESSAGE);
+            
+            if(playerName == null || playerName.trim().isEmpty())
+            {
+                playerName = "Player";
+                break;
+            }
+            
+            if(playerName.matches("[a-zA-Z]*")) //while loop that only allows letters for player name
+            {
+                break;
+            }
         }
+
         player = new Player(playerName);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(900, 600);
         this.setLayout(new BorderLayout());
         
-         // Center Panel - Case Buttons
+        
+        //center panel with case buttons
         JPanel casePanel = new JPanel(new GridLayout(4, 7, 10, 10));
 
         for (int i = 0; i < 26; i++) 
@@ -66,7 +74,9 @@ public class DONDGame extends JFrame
             int caseNumber = i + 1;
             caseButtons[i].addActionListener(e -> handleCaseClick(caseNumber - 1));
         }
-        // Bottom Panel - Logs
+
+        
+        //bottom panel and log area
         logArea = new JTextArea(6, 20);
         logArea.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(logArea);

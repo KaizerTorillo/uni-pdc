@@ -36,7 +36,7 @@ public class GameDB {
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
             System.setProperty("derby.language.sequence.preallocator", "1");
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DBManager.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GameDB.class.getName()).log(Level.SEVERE, null, ex);
         }
         try
         {
@@ -115,7 +115,7 @@ public class GameDB {
             System.out.println("Embedded driver found");
         } catch (ClassNotFoundException ex) {
             System.out.println("Issue with driver");
-            Logger.getLogger(DBManager.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GameDB.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         String sql = "INSERT INTO APP.results(name, final_amount, banker_offer, took_deal) VALUES (?, ?, ?, ?)";
