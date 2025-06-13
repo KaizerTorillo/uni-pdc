@@ -1,15 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit4TestClass.java to edit this template
- */
 package DealNoDealGame;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -41,7 +35,7 @@ public class GameDBTest {
     }
     
    
-    @Test
+    @Test//confirm db creation/setup
     public void testDbCheck() {
         System.out.println("dbCheck");
         try {
@@ -54,10 +48,8 @@ public class GameDBTest {
 
     }
 
-    /**
-     * Test of dbConnection method, of class GameDB.
-     */
-    @Test
+    
+    @Test//confirm db connetion method works
     public void testDbConnection() {
         System.out.println("dbConnection");
         try {
@@ -70,10 +62,8 @@ public class GameDBTest {
         // TODO review the generated test code and remove the default call to fail.
     }
 
-    /**
-     * Test of hasTables method, of class GameDB.
-     */
-    @org.junit.Test
+
+    @Test//check if the results table exists
     public void testHasTables() throws Exception {
         try
         { 
@@ -86,10 +76,8 @@ public class GameDBTest {
         }
     }
 
-    /**
-     * Test of saveResult method, of class GameDB.
-     */
-    @org.junit.Test
+    
+    @Test//insert test record 
     public void testSaveResult() {
         System.out.println("saveResult");
         try

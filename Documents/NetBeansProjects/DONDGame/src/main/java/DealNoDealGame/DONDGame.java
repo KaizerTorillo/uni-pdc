@@ -55,6 +55,8 @@ public class DONDGame extends JFrame
             {
                 break;
             }
+            
+            JOptionPane.showMessageDialog(this, "Invalie name. Only letters (a-z, A-Z) allowed!", "Invalid Input", JOptionPane.WARNING_MESSAGE);
         }
 
         player = new Player(playerName);
