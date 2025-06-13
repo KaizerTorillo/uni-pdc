@@ -40,26 +40,16 @@ public class DONDGame extends JFrame
         cases = CaseMechanics.setupCases(prizeList);
         b = new Banker("The Banker");
         log = new GameLogs(hsFile);
-        String playerName;
-        while (true)
-        {
-            playerName = JOptionPane.showInputDialog(this, "Enter your name (letters only):", "Welcome to Deal or No Deal!", JOptionPane.PLAIN_MESSAGE);
-            
-            if(playerName == null || playerName.trim().isEmpty())
-            {
-                playerName = "Player";
-                break;
-            }
-            
-            if(playerName.matches("[a-zA-Z]*")) //while loop that only allows letters for player name
-            {
-                break;
-            }
-            
-            JOptionPane.showMessageDialog(this, "Invalie name. Only letters (a-z, A-Z) allowed!", "Invalid Input", JOptionPane.WARNING_MESSAGE);
-        }
-
+        String playerName = getPlayerName();
         player = new Player(playerName);
+        initUI();
+        
+        log(player.getName() + ", Choose one case to keep.");
+        
+    }
+    
+    private void initUI()//initialises the gui window
+    {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(900, 600);
         this.setLayout(new BorderLayout());
@@ -87,7 +77,29 @@ public class DONDGame extends JFrame
         this.add(scrollPane, BorderLayout.SOUTH);
         this.setVisible(true);
 
-        log(player.getName() + ", Choose one case to keep.");
+    }
+    
+    private String getPlayerName()//validates the input for player's name
+    {
+        String playerName;
+        while (true)
+        {
+            playerName = JOptionPane.showInputDialog(this, "Enter your name (letters only):", "Welcome to Deal or No Deal!", JOptionPane.PLAIN_MESSAGE);
+            
+            if(playerName == null || playerName.trim().isEmpty())
+            {
+                playerName = "Player";
+                break;
+            }
+            
+            if(playerName.matches("[a-zA-Z]*")) //while loop that only allows letters for player name
+            {
+                break;
+            }
+            //error message window
+            JOptionPane.showMessageDialog(this, "Invalie name. Only letters (a-z, A-Z) allowed!", "Invalid Input", JOptionPane.WARNING_MESSAGE);
+        }
+        return playerName;
     }
 
     private void log(String message) 
@@ -112,7 +124,7 @@ public class DONDGame extends JFrame
 
             if (openCase == 25) 
             {
-                // Only the player's case is left unopened
+                // only the player's case is left unopened
                 showPlayerCaseEnd();
             }
             else if (openCase % 6 == 0 || openCase == 20) 
@@ -122,23 +134,23 @@ public class DONDGame extends JFrame
         }
     }
      
-    public void printCases() //viusal rep of open and close cases
-    {
-        for (Case c : cases.values()) 
-        {
-
-            if (!c.getIsOpen()) 
-            {
-                System.out.println(c);
-            } else if (c == player.getChosenCase()) 
-            {
-                System.out.println("Your case");
-            } else 
-            {
-                System.out.println("$" + c.getMoney());
-            }
-        }
-    }
+    //public void printCases() //viusal rep of open and close cases
+    //{
+    //    for (Case c : cases.values()) 
+    //    {
+//
+    //        if (!c.getIsOpen()) 
+    //        {
+    //            System.out.println(c);
+    //        } else if (c == player.getChosenCase()) 
+    //        {
+    //            System.out.println("Your case");
+    //        } else 
+    //        {
+    //            System.out.println("$" + c.getMoney());
+    //        }
+    //    }
+    //}
 
     private void showPlayerCaseEnd() {
     Case kept = player.getChosenCase();
