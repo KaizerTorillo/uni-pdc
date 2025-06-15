@@ -97,7 +97,7 @@ public class GameDBTest {
     public void testPrintResultsTable() throws Exception {
         try
         {
-            GameDB.printResultsTable();//should print the test results to console
+            GameLogs.printResultsTable();//should print the test results to console
             System.out.println("Pass");
         } catch (Exception e)
         {

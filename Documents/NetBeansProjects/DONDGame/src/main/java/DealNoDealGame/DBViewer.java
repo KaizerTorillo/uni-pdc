@@ -12,22 +12,22 @@ public class DBViewer {
         String path = file.getAbsolutePath();
         
 
-        try (Connection conn = DriverManager.getConnection(path);
+        try (Connection conn = DriverManager.getConnection(path);//connects to the DB. 
              Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT * FROM APP.results")) {
+             ResultSet rs = stmt.executeQuery("SELECT * FROM APP.results")) {//had to specify the schema
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
             ResultSetMetaData meta = rs.getMetaData();
             int columnCount = meta.getColumnCount();
 
-            // Print column headers
-            for (int i = 1; i <= columnCount; i++) {
+            
+            for (int i = 1; i <= columnCount; i++) {// print column headers
                 System.out.printf("%-20s", meta.getColumnName(i));
             }
             System.out.println("\n" + "-".repeat(columnCount * 20));
 
-            // Print rows
+            
             while (rs.next()) {
-                for (int i = 1; i <= columnCount; i++) {
+                for (int i = 1; i <= columnCount; i++) {// print rows
                     Object value = rs.getObject(i);
                     System.out.printf("%-20s", value);
                 }

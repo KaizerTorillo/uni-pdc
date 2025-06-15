@@ -47,15 +47,15 @@ public class CaseMechanics {
             }
 
             if (amounts.size() != numCases) {
-                System.out.println("Input file has incorrect number of values. \nFile must contain exactly " + numCases + " values. \nReverting to default 20-item prize money list.");
+                System.out.println("Input file has incorrect number of values. \nFile must contain exactly " + numCases + " values. \nReverting to default 26-item prize money list.");
                 return moneyList();
             }
         } catch (IOException e) {
-            System.out.println("Error reading prize file: " + e.getMessage() + ".\nUsing default 20-item prize money values.");
+            System.out.println("Error reading prize file: " + e.getMessage() + ".\nUsing default 26-item prize money values.");
             return moneyList();
 
         } catch (NumberFormatException n) {
-            System.out.println("Input file has attempted to convert a String to a Double. \n" + n.getMessage() + "\nUsing default 20-item prize money values.");
+            System.out.println("Input file has attempted to convert a String to a Double. \n" + n.getMessage() + "\nUsing default 26-item prize money values.");
             return moneyList();
         }
 

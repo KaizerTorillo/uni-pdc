@@ -55,8 +55,8 @@ public class DONDGame extends JFrame
         this.setLayout(new BorderLayout());
         
         
-        //center panel with case buttons
-        JPanel casePanel = new JPanel(new GridLayout(4, 7, 10, 10));
+        
+        JPanel casePanel = new JPanel(new GridLayout(4, 7, 10, 10));//center panel with case buttons
 
         for (int i = 0; i < 26; i++) 
         {
@@ -64,12 +64,12 @@ public class DONDGame extends JFrame
             caseButtons[i] = new JButton("Case " + (i + 1));
             casePanel.add(caseButtons[i]);
             int caseNumber = i + 1;
-            caseButtons[i].addActionListener(e -> handleCaseClick(caseNumber - 1));
+            caseButtons[i].addActionListener(e -> clickCase(caseNumber - 1));
         }
 
         
-        //bottom panel and log area
-        logArea = new JTextArea(6, 20);
+        
+        logArea = new JTextArea(6, 20);//bottom panel and log area
         logArea.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(logArea);
 
@@ -107,15 +107,15 @@ public class DONDGame extends JFrame
         logArea.append(message + "\n");
     }
 
-     private void handleCaseClick(int index) 
+     private void clickCase(int index) 
     {
-        Case selected = cases.get(index+1);
+        Case selected = cases.get(index+1);//if player does not have a case yet, assign one
         if (player.getChosenCase() == null) 
         {
             player.setChosenCase(selected);
             caseButtons[index].setEnabled(false);
             log("You chose Case #" + selected.getCaseNum() + ". We shall find out what's inside the case at the end!");
-        } else if (!selected.getIsOpen() && selected != player.getChosenCase()) 
+        } else if (!selected.getIsOpen() && selected != player.getChosenCase()) //otherwise, open the selected case and show amount 
         {
             selected.open();
             openCase++;
@@ -134,23 +134,6 @@ public class DONDGame extends JFrame
         }
     }
      
-    //public void printCases() //viusal rep of open and close cases
-    //{
-    //    for (Case c : cases.values()) 
-    //    {
-//
-    //        if (!c.getIsOpen()) 
-    //        {
-    //            System.out.println(c);
-    //        } else if (c == player.getChosenCase()) 
-    //        {
-    //            System.out.println("Your case");
-    //        } else 
-    //        {
-    //            System.out.println("$" + c.getMoney());
-    //        }
-    //    }
-    //}
 
     private void showPlayerCaseEnd() {
     Case kept = player.getChosenCase();
@@ -165,44 +148,7 @@ public class DONDGame extends JFrame
         "Your case contained: $" + kept.getMoney());
         endGame();
     }
-    
-    public void playerChooseCase() //user picks case and info is stored
-    {
 
-        int choice = 0;
-        boolean goodInput = false;
-
-        while (!goodInput) 
-        {
-            System.out.println("Choose a case from 1 to " + CaseMechanics.getNumCases() + " :");
-            try 
-            {
-                choice = scan.nextInt();
-                scan.nextLine();
-
-                if (choice < 1 || choice > CaseMechanics.getNumCases()) // uif user int input greater than all case num
-                {
-                    System.out.println("That case does not exist. Please choose another case!");
-                    continue;
-                }
-
-                goodInput = true;
-
-            } catch (InputMismatchException e) { //if user input not int
-                System.out.println("That's not a case! Please enter a number");
-                scan.nextLine();
-        }
-
-
-
-        player.setChosenCase(cases.get(choice));
-        player.getChosenCase().open();
-        System.out.println("You chose Case # " + player.getChosenCase().getCaseNum() + ". We shall find out what's inside the case at the end!");
-
-        }
-    }
-
-    
 
     public double bankOffer() // 
     {
@@ -231,28 +177,7 @@ public class DONDGame extends JFrame
     }
 
 
-    public int remainingCasesClosed() //checks how many closed cases are left
-    {
-        int count = 0;
-        for (Case c : cases.values()) {
-            if (!c.getIsOpen() && c != player.getChosenCase()) {
-                count++;
-            }
-        }
-        return count;
-    }
-
-    public boolean allCaseOpen() //checks if all cases are open 
-    {
-        for (Case c : cases.values()) {
-            if (!c.getIsOpen()) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public void endGame() 
+    public void endGame() //shows player the amount in their case at the end 
     {
         Case kept = player.getChosenCase();
         double caseValue = kept.getMoney();
@@ -285,11 +210,6 @@ public class DONDGame extends JFrame
         System.exit(0);
     }
 
-    public double showPlayerCase() // reveal player case
-    {
-
-        return player.getChosenCase().getMoney();
-    }
 
     
     
@@ -300,7 +220,7 @@ public class DONDGame extends JFrame
             GameDB.dbConnection();
             GameDB.dbCheck();
             GameDB.saveResult(player.getName(), finalAmount, lastOffer, takeDeal);
-            GameDB.printResultsTable();
+            GameLogs.printResultsTable();
 
 
             
@@ -312,6 +232,13 @@ public class DONDGame extends JFrame
     }
         
 
+
+    public static void main(String[] args) {//initialise game
+        SwingUtilities.invokeLater(DONDGame::new);
+    }
+}
+
+
     /*
 	 * public void yourScore(double won) { Map<String, Double> score = new
 	 * HashMap<>(); String named = playerName.toUpperCase().trim(); for(String key:
@@ -321,9 +248,78 @@ public class DONDGame extends JFrame
 	 * 
 	 * lb.outputFile(score); }
      */
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(DONDGame::new);
-    }
+
+//    public double showPlayerCase() // reveal player case
+//    {
+//
+//        return player.getChosenCase().getMoney();
+//    }
+
+
+//    public int remainingCasesClosed() //checks how many closed cases are left
+//    {
+//        int count = 0;
+//        for (Case c : cases.values()) {
+//            if (!c.getIsOpen() && c != player.getChosenCase()) {
+//                count++;
+//            }
+//        }
+//        return count;
+//    }
+
+//    public boolean allCaseOpen() //checks if all cases are open 
+//    {
+//        for (Case c : cases.values()) {
+//            if (!c.getIsOpen()) {
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
+
     
-    
-}
+//    public void playerChooseCase() //user picks case and info is stored
+//    {
+//        int choice = 0;
+//        boolean goodInput = false;
+//        while (!goodInput) 
+//        {
+//            System.out.println("Choose a case from 1 to " + CaseMechanics.getNumCases() + " :");
+//            try 
+//            {
+//                choice = scan.nextInt();
+//                scan.nextLine();
+//                if (choice < 1 || choice > CaseMechanics.getNumCases()) // uif user int input greater than all case num
+//                {
+//                    System.out.println("That case does not exist. Please choose another case!");
+//                    continue;
+//                }
+//                goodInput = true;
+//            } catch (InputMismatchException e) { //if user input not int
+//                System.out.println("That's not a case! Please enter a number");
+//                scan.nextLine();
+//        }
+//        player.setChosenCase(cases.get(choice));
+//        player.getChosenCase().open();
+//        System.out.println("You chose Case # " + player.getChosenCase().getCaseNum() + ". We shall find out what's inside the case at the end!");
+//
+//        }
+//    }
+
+        //public void printCases() //viusal rep of open and close cases
+    //{
+    //    for (Case c : cases.values()) 
+    //    {
+//
+    //        if (!c.getIsOpen()) 
+    //        {
+    //            System.out.println(c);
+    //        } else if (c == player.getChosenCase()) 
+    //        {
+    //            System.out.println("Your case");
+    //        } else 
+    //        {
+    //            System.out.println("$" + c.getMoney());
+    //        }
+    //    }
+    //}

@@ -72,9 +72,6 @@ public class GameDB {
     {
         try(Statement s = co.createStatement())
         {
-            //s.executeUpdate("""
-            //                DROP TABLE""");
-            //System.out.println("Table Dropped");
             s.executeUpdate("""
                 CREATE TABLE results 
                     (id INT PRIMARY KEY GENERATED ALWAYS AS IDENTITY, 
@@ -136,37 +133,7 @@ public class GameDB {
         }
     }
     
-    public static void printResultsTable() throws ClassNotFoundException {
-        File file = new File (url);
-        String path = file.getPath();
-        
-
-        try (Connection conn = DriverManager.getConnection(path);
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT * FROM APP.results")) {
-            Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
-            ResultSetMetaData meta = rs.getMetaData();
-            int columnCount = meta.getColumnCount();
-
-            // Print column headers
-            for (int i = 1; i <= columnCount; i++) {
-                System.out.printf("%-20s", meta.getColumnName(i));
-            }
-            System.out.println("\n" + "-".repeat(columnCount * 20));
-
-            // Print rows
-            while (rs.next()) {
-                for (int i = 1; i <= columnCount; i++) {
-                    Object value = rs.getObject(i);
-                    System.out.printf("%-20s", value);
-                }
-                System.out.println();
-            }
-
-        } catch (SQLException e) {
-            System.out.println("Error displaying results table: " + e.getMessage());
-        }
-    }
+    
 }
             
     
